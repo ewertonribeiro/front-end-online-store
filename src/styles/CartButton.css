@@ -1,0 +1,18 @@
+.cart-button a  {
+  display: flex;
+  text-decoration: none;
+}
+
+.cart-button a .cart-quantity {
+  border-radius: 30px;
+  background-color: var(--color-green);
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  padding-top: 2px;
+  position: relative;
+  right: 15px;
+  top: -5px;
+  color: white;
+  font-weight: 700;
+}

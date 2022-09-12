@@ -5,12 +5,19 @@ import { setProducts } from '../redux/features/products';
 import { getProductsFromCategoryAndQuery } from '../services/api';
 import CartButton from './CartButton';
 
+import Logo from '../assets/logo.svg';
+import Lupa from '../assets/lupa.svg';
+
+import '../styles/Header.css';
+import { Link } from 'react-router-dom';
+
 function Header() {
   const [search, setSearch] = useState('');
 
   const dispatch = useDispatch();
 
-  function handleClick() {
+  function handleSubmit(e) {
+    e.preventDefault();
     getProductsFromCategoryAndQuery('', search).then((res) => {
       dispatch(setProducts({ lista: res.results }));
       setSearch('');
@@ -19,23 +26,28 @@ function Header() {
 
   return (
     <header className="header">
-      <h1>Header</h1>
-      <div className="search-wrapper">
-        <input
-          type="text"
-          placeholder="Pesquisa:"
-          data-testid="query-input"
-          onChange={ (e) => setSearch(e.target.value) }
-        />
-        <button
-          type="button"
-          data-testid="query-button"
-          onClick={ handleClick }
-        >
-          Pesquisar
-        </button>
+      <div className="header-container">
+        <form className="search-wrapper" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Digite a sua Busca"
+            data-testid="query-input"
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <button
+            type="submit"
+            data-testid="query-button"
+          >
+            <img src={Lupa} alt="Search" />
+          </button>
+        </form>
+        <Link to="/">
+          <div className="header-logo">
+            <img src={Logo} alt="logo" />
+          </div>
+        </Link>
+        <CartButton />
       </div>
-      <CartButton />
     </header>
   );
 }
