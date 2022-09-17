@@ -1,0 +1,156 @@
+.right-section {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.shopcart-total {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.shopcart-total h3 {
+  font-size: 2rem;
+}
+
+
+.product-cart {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+}
+
+.product-name {
+  font-size: .9rem; 
+  color: #444955;
+  font-weight: 600;
+}
+
+.product-price {
+  font-size: 1.2rem;
+}
+.product-cart button {
+  border:none; 
+  background-color: transparent;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.payment-section {
+  width: 85%;
+  /* padding: 0 4rem; */
+  text-align: left;
+}
+
+.payment-section h1 {
+  font-size: 1.6rem;
+}
+
+.payment-section form {
+  /* margin: 1rem auto; */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+form .form-inputs {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  /* background-color: red; */
+}
+
+.form-inputs input {
+  border: 1px solid #94979D;
+  color: var(--color-grey);
+  font-weight: 400;
+  font-size: 1.2rem;
+  padding: .3rem;
+  /* width: 350px; */
+}
+
+.form-inputs select {
+  background-color: transparent;
+  border: 1px solid #94979D;
+  color: var(--color-grey);
+  font-weight: 300;
+  font-size: 1.2rem;
+}
+
+.form-control {
+  display: grid;
+  gap: 1rem;
+  width: 100%;
+}
+
+.grid-1 {
+  grid-template-columns: 50% 50%;
+}
+
+.grid-2 {
+  grid-template-columns: 30% 70%;
+}
+
+.grid-3 {
+  grid-template-columns: 70% 30%;
+}
+
+.form-inputs input:focus {
+  outline: none;
+  border: 2px solid var(--color-green);
+}
+
+.payment-methods {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.payment-methods-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  padding: 2rem 1rem;
+  margin-bottom: 2rem;
+}
+
+.payment-methods-method {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.payment-methods-method h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.payment-methods-method div {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.payment-methods-method  label{
+  display: flex;
+  gap: 1rem;
+  font-size: 2.8rem;
+  color: var(--color-grey);
+}
+
+form button {
+  align-self: center;
+}
+
+.payment-methods-method input[type=radio]:checked {
+  color: var(--color-green);
+}

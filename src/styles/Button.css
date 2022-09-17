@@ -1,0 +1,17 @@
+
+.button {
+  background-color: var(--color-green);
+  border: none;
+  cursor: pointer;
+  transition: all .3s;
+  padding: 1rem;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+
+.button:hover {
+  background-color: #27916a;
+  /* filter: brightness(0.8); */
+}

@@ -1,0 +1,30 @@
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quantity div {
+  background-color: var(--color-grey);
+  border-radius: 70%;
+  height: 15px;
+  width: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  /* width: 1rem; */
+}
+
+.quantity div p {
+  /* font-size: 1rem; */
+  color: white;
+}
+
+.quantity button {
+  border: none;
+  background-color: transparent;
+  color: var(--color-grey);
+  /* font-size: 1rem; */
+  cursor: pointer;
+}

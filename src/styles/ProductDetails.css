@@ -1,0 +1,40 @@
+.content img {
+  width: 70%;
+  height: 60%;
+  max-height: 80%;
+}
+
+.product-specs {
+  padding: 4rem 2rem;
+  height: 50%;
+}
+
+.product-specs h2 {
+  font-size: 2rem;
+}
+
+.product-specs ul {
+  color: var(--color-grey);
+}
+
+
+.product-specs li {
+  padding-bottom: .6rem;
+}
+
+
+.product-info-cart {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  justify-content: space-around;
+}
+
+.product-info-cart p {
+  color: var(--color-grey);
+}
+
+.product-info-cart strong {
+  font-size: 2rem;
+  color: #000;
+}

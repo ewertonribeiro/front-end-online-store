@@ -1,0 +1,17 @@
+.home-page {
+  max-width: 100vw;
+  width: 95%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 15% 80%;
+  grid-gap: 2rem;
+  margin: calc(var(--header-height) + 2rem) auto 0;
+}
+
+.home-page main .products-container {
+  align-items: center;
+  justify-content: space-evenly;
+  display: flex;
+  flex-wrap: wrap;
+}
+
