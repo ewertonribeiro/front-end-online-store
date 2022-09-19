@@ -49,6 +49,7 @@ code {
   justify-content: center;
   gap: 2rem;
   background-color: #fff;
+  position: relative;
 }
 
 .right-section {
@@ -77,3 +78,16 @@ code {
   font-size: 2rem;
 }
 
+.frete {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background-color: var(--color-blue);
+  color: #ffff;
+  font-weight: 500;
+  font-size: 1.2rem;
+  padding: 6px 10px;
+}

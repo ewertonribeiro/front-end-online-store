@@ -9,6 +9,7 @@ import { FaTrash, FaCcVisa, FaCcMastercard, FaCcAmex, FaBarcode } from 'react-ic
 
 import '../styles/ShopCart.css';
 import Button from '../components/Button';
+import { useHistory } from 'react-router-dom';
 
 
 export default function ShopCart() {
@@ -30,10 +31,11 @@ export default function ShopCart() {
       currency: 'BRL',
     })
 
+  const history = useHistory()
 
   function handleSubmit(e) {
-    e.preventDefault()
-    console.log(e.target.value)
+    e.preventDefault();
+    history.push('/');
   }
 
   return (
@@ -129,7 +131,7 @@ export default function ShopCart() {
                           placeholder="Cidade"
                           required
                         />
-                        <select name="state">
+                        <select name="state" required>
                           <option value="Para - PA" >Para - PA</option>
                           <option value="Para - PA" >Para - PA</option>
                           <option value="Para - PA" >Para - PA</option>

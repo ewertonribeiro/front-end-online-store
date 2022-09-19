@@ -10,6 +10,8 @@ import '../styles/ProductDetails.css';
 import Button from '../components/Button';
 import Quantity from '../components/Quantity';
 
+import { FiPackage } from 'react-icons/fi'
+
 function ProductDetails(props) {
 
   const { match: { params: { id } } } = props;
@@ -34,8 +36,7 @@ function ProductDetails(props) {
 
   }, [cart]);
 
-  const { price, title, thumbnail } = product;
-
+  const { price, title, thumbnail, shipping } = product;
   const formatNumber = price => Number(price)
     .toLocaleString('pt-br', {
       style: 'currency',
@@ -46,6 +47,7 @@ function ProductDetails(props) {
     <div className="page">
       <div className="left-section">
         <div className="content">
+          {/* {shipping.free_shipping && <div className="frete">Frete Grátis<FiPackage /></div>} */}
           <h2 data-testid="product-detail-name">{title}</h2>
           <img src={thumbnail} alt={title} data-testid="product-detail-image" />
         </div>
