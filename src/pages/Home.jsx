@@ -7,6 +7,7 @@ import '../styles/Home.css';
 
 export default function Home() {
   const lista = useSelector((state) => state.products.lista);
+  const cart = useSelector(({ cart }) => cart.cart);
 
   return (
     <section className="home-page">
@@ -22,7 +23,11 @@ export default function Home() {
         <main className="home-page-main">
           <section className="products-container">
             {
-              lista.map((item) => <Product key={item.id} {...item} />)
+              lista.map((item) => {
+                const itemInCart = cart.some(e => e.id === item.id);
+
+                return <Product key={item.id} {...item} cart={itemInCart} />
+              })
             }
           </section>
         </main>

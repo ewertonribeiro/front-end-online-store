@@ -6,7 +6,7 @@ import { FiPackage } from 'react-icons/fi'
 import '../styles/Product.css';
 import Button from './Button';
 
-export default function Product({ title, price, thumbnail, id, ...rest }) {
+export default function Product({ title, price, thumbnail, id, cart, ...rest }) {
   const dispatch = useDispatch();
   const { shipping: { free_shipping } } = rest
 
@@ -16,7 +16,7 @@ export default function Product({ title, price, thumbnail, id, ...rest }) {
       currency: 'BRL',
     })
   return (
-    <div className="product" >
+    <div className={`product ${cart && 'product-in-cart'}`} >
       {free_shipping && <div className="frete">Frete Grátis<FiPackage /></div>}
       <div>
         <img src={thumbnail} alt={title} />
