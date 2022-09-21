@@ -10,6 +10,11 @@ declare interface Item {
   quantity: number;
 }
 
+declare interface Categorie {
+  id: string;
+  name: string;
+}
+
 declare module '*.svg' {
   const contend: any;
   export default content;

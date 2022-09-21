@@ -8,11 +8,6 @@ import { setProducts } from '../redux/features/products';
 
 import '../styles/Aside.css';
 
-interface Categorie {
-  id: string;
-  name: string;
-}
-
 export default function Aside() {
   const dispatch = useDispatch();
   const [categories, setCategories] = useState<Categorie[]>([]);
