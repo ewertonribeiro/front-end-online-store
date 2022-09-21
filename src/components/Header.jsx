@@ -9,10 +9,11 @@ import CartButton from './CartButton';
 import Logo from '../assets/logo.svg';
 
 import '../styles/Header.css';
+import ProductsCart from './ProductsCart';
 
 function Header() {
   const [search, setSearch] = useState('');
-  const [slider, setSlider] = useState(true);
+  const [slider, setSlider] = useState(false);
 
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.cart);
@@ -53,7 +54,7 @@ function Header() {
               <h1>Seu Carrinho Esta Vazio</h1>
             </div>
           ) : (
-            <h1>Carrinho </h1>
+            <ProductsCart />
           )}
         </div>
       )}
