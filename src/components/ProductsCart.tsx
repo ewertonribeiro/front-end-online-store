@@ -8,7 +8,7 @@ import Quantity from './Quantity';
 import formatPrice from '../utils/formatPrice';
 
 export default function ProductsCart() {
-  const cart = useSelector((state) => state.cart.cart);
+  const cart: Item[] = useSelector((state: any) => state.cart.cart);
   const dispatch = useDispatch();
   return (
     <>
@@ -19,7 +19,7 @@ export default function ProductsCart() {
           </button>
           <img src={item.thumbnail} alt={item.title} />
           <p className="product-name">{item.title}</p>
-          <Quantity e={item} />
+          <Quantity {...item} />
           <p className="product-price">{formatPrice(item.price)}</p>
         </div>
       ))}

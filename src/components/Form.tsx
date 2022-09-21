@@ -1,15 +1,13 @@
-import React from 'react';
+import React, { FormEvent } from 'react';
 import { useHistory } from 'react-router-dom';
 // eslint-disable-next-line object-curly-newline
-import {
-  FaBarcode, FaCcVisa, FaCcMastercard, FaCcAmex,
-} from 'react-icons/fa';
+import { FaBarcode, FaCcVisa, FaCcMastercard, FaCcAmex } from 'react-icons/fa';
 import Button from './Button';
 
 function Form() {
   const history = useHistory();
 
-  function handleSubmit(e) {
+  function handleSubmit(e: FormEvent) {
     e.preventDefault();
     history.push('/');
   }

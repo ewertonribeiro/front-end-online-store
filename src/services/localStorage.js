@@ -14,14 +14,14 @@ function addToCart(item) {
   if (itemAlreadInCart) {
     const newCart = itens.map((e) => {
       if (e.id === item.id) {
-        const newItem = { ...e, quantity: e.quantity += 1 };
+        const newItem = { ...e, quantity: (e.quantity += 1) };
         return newItem;
       }
       return e;
     });
     l.setItem('cart', JSON.stringify(newCart));
   } else {
-    item.quantity = 1;
+    Object.assign(item, { quantity: 1 });
     itens.push(item);
     l.setItem('cart', JSON.stringify(itens));
   }
@@ -35,7 +35,7 @@ function subToCart(item) {
       if (e.quantity === 1) {
         return false;
       }
-      const obj = { ...e, quantity: e.quantity -= 1 };
+      const obj = { ...e, quantity: (e.quantity -= 1) };
       return obj;
     }
     return e;
@@ -57,6 +57,4 @@ function getItemFromCart(id) {
   return itens.find((item) => item.id === id);
 }
 
-export {
-  addToCart, getAllFromCart, getItemFromCart, subToCart, removeToCart,
-};
+export { addToCart, getAllFromCart, getItemFromCart, subToCart, removeToCart };

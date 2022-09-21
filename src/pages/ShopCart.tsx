@@ -9,7 +9,7 @@ import ProductsCart from '../components/ProductsCart';
 import ShopCartTotal from '../components/ShopCartTotal';
 
 export default function ShopCart() {
-  const cart = useSelector((state) => state.cart.cart);
+  const cart: Item[] = useSelector((state: any) => state.cart.cart);
 
   const [buy, setBuy] = useState(false);
 

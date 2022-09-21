@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FormEvent, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaSearch } from 'react-icons/fa';
 import { Link, useHistory } from 'react-router-dom';
@@ -18,7 +18,7 @@ function Header() {
   const [slider, setSlider] = useState(false);
 
   const dispatch = useDispatch();
-  const cart = useSelector((state) => state.cart.cart);
+  const cart: Item[] = useSelector((state: any) => state.cart.cart);
 
   const history = useHistory();
 
@@ -27,7 +27,7 @@ function Header() {
     history.push('/shopcart');
   }
 
-  function handleSubmit(e) {
+  function handleSubmit(e: FormEvent) {
     e.preventDefault();
     getProductsFromCategoryAndQuery('', search).then((res) => {
       dispatch(setProducts({ lista: res.results }));
