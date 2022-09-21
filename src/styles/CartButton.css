@@ -1,9 +1,9 @@
-.cart-button a  {
+.cart-button {
   display: flex;
-  text-decoration: none;
+  cursor: pointer;
 }
 
-.cart-button a .cart-quantity {
+.cart-button .cart-quantity {
   border-radius: 30px;
   background-color: var(--color-green);
   width: 25px;

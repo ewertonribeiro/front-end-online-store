@@ -58,3 +58,15 @@ header .header-container {
 .search-wrapper input::placeholder {
   color: var(--color-grey);
 }
+
+.slider {
+  position: absolute;
+  background-color: white;
+  right: 0;
+  top: var(--header-height);
+  height: 80vh;
+  width: 40rem;
+  /* margin-top: var(--header-height); */
+  z-index: 1000;
+  box-shadow: 0 3px 10px 1px rgba(0, 0, 0, 0.05);
+}
