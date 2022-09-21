@@ -1,18 +1,20 @@
 import React from 'react';
-import { act, render, screen, waitFor } from '@testing-library/react';
+import {
+  act, render, screen, waitFor,
+} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import App from '../App';
 import mockedQueryResult from '../__mocks__/query';
 import mockFetch from '../__mocks__/mockFetch';
 import mockLocalStorage from '../__mocks__/localStorage';
 import mockDetails from '../__mocks__/details';
-import userEvent from '@testing-library/user-event';
 
-describe(`11 - Avalie e comente acerca de um produto em sua tela de exibição detalhada`, () => {
+describe('11 - Avalie e comente acerca de um produto em sua tela de exibição detalhada', () => {
   beforeEach(() => jest.spyOn(global, 'fetch').mockImplementation(mockFetch));
 
   it('Avalia se é possível realizar uma avaliação na tela de detalhes de um produto', async () => {
-    const evaluationEmail = `teste@trybe.com`;
-    const evaluationContent = `Esta é uma avaliação sobre o primeiro produto realizada na tela de detalhe.`;
+    const evaluationEmail = 'teste@trybe.com';
+    const evaluationContent = 'Esta é uma avaliação sobre o primeiro produto realizada na tela de detalhe.';
 
     render(<App />);
     expect(global.fetch).toHaveBeenCalled();
@@ -21,25 +23,23 @@ describe(`11 - Avalie e comente acerca de um produto em sua tela de exibição d
     expect(global.fetch).toHaveBeenCalledTimes(2);
 
     userEvent.click((await screen.findAllByTestId('product-detail-link'))[0]);
-    await waitFor(async () =>
-      expect(
-        await screen.findByTestId('product-detail-name')
-      ).toHaveTextContent(mockedQueryResult.results[0].title)
-    );
+    await waitFor(async () => expect(
+      await screen.findByTestId('product-detail-name'),
+    ).toHaveTextContent(mockedQueryResult.results[0].title));
 
     userEvent.type(screen.getByTestId('product-detail-email'), evaluationEmail);
 
     expect(await screen.findByTestId('product-detail-email')).toHaveValue(
-      evaluationEmail
+      evaluationEmail,
     );
 
     userEvent.type(
       screen.getByTestId('product-detail-evaluation'),
-      evaluationContent
+      evaluationContent,
     );
 
     expect(await screen.findByTestId('product-detail-evaluation')).toHaveValue(
-      evaluationContent
+      evaluationContent,
     );
 
     for (let index = 1; index <= 5; index += 1) {
@@ -52,7 +52,7 @@ describe(`11 - Avalie e comente acerca de um produto em sua tela de exibição d
 
     expect(await screen.findByTestId('product-detail-email')).toHaveValue('');
     expect(await screen.findByTestId('product-detail-evaluation')).toHaveValue(
-      ''
+      '',
     );
 
     await waitFor(async () => {
@@ -74,36 +74,30 @@ describe(`11 - Avalie e comente acerca de um produto em sua tela de exibição d
     userEvent.type(emailEl, evaluationEmailError);
 
     expect(await screen.findByTestId('product-detail-email')).toHaveValue(
-      evaluationEmailError
+      evaluationEmailError,
     );
 
     expect(await screen.findByTestId('submit-review-btn')).toBeVisible();
     userEvent.click(await screen.findByTestId('submit-review-btn'));
 
-    await waitFor(async () =>
-      expect(await screen.findByTestId('error-msg')).toHaveTextContent(
-        'Campos inválidos'
-      )
-    );
+    await waitFor(async () => expect(await screen.findByTestId('error-msg')).toHaveTextContent(
+      'Campos inválidos',
+    ));
 
     userEvent.type(
       await screen.findByTestId('product-detail-email'),
-      fullEmail
+      fullEmail,
     );
 
     userEvent.click(await screen.findByTestId('submit-review-btn'));
 
-    await waitFor(async () =>
-      expect(await screen.findByTestId('error-msg')).toHaveTextContent(
-        'Campos inválidos'
-      )
-    );
+    await waitFor(async () => expect(await screen.findByTestId('error-msg')).toHaveTextContent(
+      'Campos inválidos',
+    ));
 
     userEvent.click(screen.getByTestId('3-rating'));
     userEvent.click(screen.getByTestId('submit-review-btn'));
-    await waitFor(() =>
-      expect(screen.queryByTestId('error-msg')).not.toBeInTheDocument()
-    );
+    await waitFor(() => expect(screen.queryByTestId('error-msg')).not.toBeInTheDocument());
   });
 
   it('Avalia se a avaliação continua após recarregar a pagina', async () => {
@@ -113,38 +107,33 @@ describe(`11 - Avalie e comente acerca de um produto em sua tela de exibição d
     render(<App />);
 
     expect((await screen.findAllByTestId('review-card-email')).length).toEqual(
-      2
+      2,
     );
 
     expect((await screen.findAllByTestId('review-card-rating')).length).toEqual(
-      2
+      2,
     );
     expect(
-      (await screen.findAllByTestId('review-card-evaluation')).length
+      (await screen.findAllByTestId('review-card-evaluation')).length,
     ).toEqual(2);
   });
 
   it('Avalia se a avaliação feita para um produto não aparece na tela de detalhes de outro produto', async () => {
     window.history.pushState(null, document.title, '/');
 
-    const evaluationEmail = `teste@trybe.com`;
-    const evaluationContent =
-      'Esta é uma avaliação sobre o primeiro produto realizada na tela de detalhe.';
+    const evaluationEmail = 'teste@trybe.com';
+    const evaluationContent = 'Esta é uma avaliação sobre o primeiro produto realizada na tela de detalhe.';
 
     await act(async () => {
       render(<App />);
     });
     expect(global.fetch).toHaveBeenCalled();
 
-    await act(async () =>
-      userEvent.click((await screen.findAllByTestId('category'))[0])
-    );
+    await act(async () => userEvent.click((await screen.findAllByTestId('category'))[0]));
 
     expect(global.fetch).toHaveBeenCalledTimes(2);
 
-    await act(async () =>
-      userEvent.click((await screen.findAllByTestId('product-detail-link'))[1])
-    );
+    await act(async () => userEvent.click((await screen.findAllByTestId('product-detail-link'))[1]));
 
     expect(screen.queryByText(evaluationEmail)).toBeNull();
     expect(screen.queryByText(evaluationContent)).toBeNull();

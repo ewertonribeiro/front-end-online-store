@@ -1,11 +1,10 @@
 import { useDispatch } from 'react-redux';
+import { HiPlus, HiMinus } from 'react-icons/hi';
 import { add, sub } from '../redux/features/cart';
-import { HiPlus, HiMinus } from 'react-icons/hi'
 
 import '../styles/Quantity.css';
 
-const Quantity = ({ e }) => {
-
+function Quantity({ e }) {
   const dispatch = useDispatch();
 
   return (
@@ -28,7 +27,7 @@ const Quantity = ({ e }) => {
         <HiPlus />
       </button>
     </div>
-  )
+  );
 }
 
-export default Quantity
+export default Quantity;

@@ -10,19 +10,18 @@ import '../styles/ProductDetails.css';
 import Button from '../components/Button';
 import Quantity from '../components/Quantity';
 
-import { FiPackage } from 'react-icons/fi'
+import { FiPackage } from 'react-icons/fi';
 
 function ProductDetails(props) {
-
   const { match: { params: { id } } } = props;
 
-  const [product, setProduct] = useState({})
-  const dispatch = useDispatch()
+  const [product, setProduct] = useState({});
+  const dispatch = useDispatch();
 
   const cart = useSelector(({ cart }) => cart.cart);
 
   useEffect(() => {
-    const item = cart.find(item => item.id == id);
+    const item = cart.find((item) => item.id == id);
 
     if (!item) {
       getProductById(id)
@@ -31,17 +30,18 @@ function ProductDetails(props) {
           setProduct(res);
         });
     } else {
-      setProduct(item)
+      setProduct(item);
     }
-
   }, [cart]);
 
-  const { price, title, thumbnail, shipping } = product;
-  const formatNumber = price => Number(price)
+  const {
+    price, title, thumbnail, shipping,
+  } = product;
+  const formatNumber = (price) => Number(price)
     .toLocaleString('pt-br', {
       style: 'currency',
       currency: 'BRL',
-    })
+    });
 
   return (
     <div className="page">

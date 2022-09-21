@@ -8,9 +8,9 @@ export default class Rotas extends Component {
   render() {
     return (
       <Switch>
-        <Route exact path="/" component={ Home } />
-        <Route exact path="/shopcart" component={ ShopCart } />
-        <Route exact path="/product/:id" component={ ProductDetails } />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/shopcart" component={ShopCart} />
+        <Route exact path="/product/:id" component={ProductDetails} />
       </Switch>
     );
   }

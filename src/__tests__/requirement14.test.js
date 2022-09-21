@@ -1,14 +1,13 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import App from '../App';
 import mockedQueryResult from '../__mocks__/query';
 import mockFetch from '../__mocks__/mockFetch';
-import userEvent from '@testing-library/user-event';
 
-describe(`14 - Limite a quantidade de produtos adicionados ao carrinho pela quantidade disponível em estoque`, () => {
-  beforeEach(()=> jest.spyOn(global, 'fetch').mockImplementation(mockFetch));
-  it(`Avalia se não é possível adicionar ao carrinho mais produtos do que o disponível em estoque`, async () => {
-
+describe('14 - Limite a quantidade de produtos adicionados ao carrinho pela quantidade disponível em estoque', () => {
+  beforeEach(() => jest.spyOn(global, 'fetch').mockImplementation(mockFetch));
+  it('Avalia se não é possível adicionar ao carrinho mais produtos do que o disponível em estoque', async () => {
     render(<App />);
     expect(global.fetch).toHaveBeenCalled();
     userEvent.click((await screen.findAllByTestId('category'))[0]);
@@ -21,7 +20,7 @@ describe(`14 - Limite a quantidade de produtos adicionados ao carrinho pela quan
     );
     await waitFor(async () => expect((await screen.findAllByTestId('shopping-cart-product-quantity'))[0]).toHaveTextContent(
       '1',
-    ))
+    ));
     userEvent.click((await screen.findAllByTestId('product-increase-quantity'))[0]);
     userEvent.click((await screen.findAllByTestId('product-increase-quantity'))[0]);
     userEvent.click((await screen.findAllByTestId('product-increase-quantity'))[0]);

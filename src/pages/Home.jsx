@@ -24,15 +24,14 @@ export default function Home() {
           <section className="products-container">
             {
               lista.map((item) => {
-                const itemInCart = cart.some(e => e.id === item.id);
+                const itemInCart = cart.some((e) => e.id === item.id);
 
-                return <Product key={item.id} {...item} cart={itemInCart} />
+                return <Product key={item.id} {...item} cart={itemInCart} />;
               })
             }
           </section>
         </main>
-      )
-      }
+      )}
     </section>
   );
 }

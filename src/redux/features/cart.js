@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getAllFromCart, subToCart, addToCart, removeToCart } from '../../services/localStorage';
+import {
+  getAllFromCart, subToCart, addToCart, removeToCart,
+} from '../../services/localStorage';
 
 const initialState = {
   cart: getAllFromCart(),
@@ -10,7 +12,7 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     setCart: (state) => {
-      state.cart = getAllFromCart()
+      state.cart = getAllFromCart();
     },
     add: (state, { payload: { item } }) => {
       addToCart(item);
@@ -27,6 +29,8 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { setCart, add, remove, sub } = cartSlice.actions;
+export const {
+  setCart, add, remove, sub,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;

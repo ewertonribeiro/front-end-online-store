@@ -52,10 +52,11 @@ function removeToCart(item) {
   l.setItem('cart', JSON.stringify(newCart));
 }
 
-
 function getItemFromCart(id) {
   const itens = getAllFromCart();
-  return itens.find(item => item.id === id);
+  return itens.find((item) => item.id === id);
 }
 
-export { addToCart, getAllFromCart, getItemFromCart, subToCart, removeToCart };
+export {
+  addToCart, getAllFromCart, getItemFromCart, subToCart, removeToCart,
+};

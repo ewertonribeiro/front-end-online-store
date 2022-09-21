@@ -1,12 +1,14 @@
 import React from 'react';
-import { act, render, screen, waitFor } from '@testing-library/react';
+import {
+  act, render, screen, waitFor,
+} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import App from '../App';
 import mockedQueryResult from '../__mocks__/query';
 import mockFetch from '../__mocks__/mockFetch';
 import mockedCategoriesResult from '../__mocks__/categories';
-import userEvent from '@testing-library/user-event';
 
-describe(`12 - Finalize a compra vendo um resumo dela, preenchendo os seus dados e escolhendo a forma de pagamento`, () => {
+describe('12 - Finalize a compra vendo um resumo dela, preenchendo os seus dados e escolhendo a forma de pagamento', () => {
   beforeEach(() => jest.spyOn(global, 'fetch').mockImplementation(mockFetch));
 
   it('Avalia se, na página de checkout, existe um resumo do pedido', async () => {
@@ -23,20 +25,20 @@ describe(`12 - Finalize a compra vendo um resumo dela, preenchendo os seus dados
     expect(await screen.findAllByTestId('shopping-cart-product-name'));
 
     expect(
-      (await screen.findAllByTestId('shopping-cart-product-name'))[0]
+      (await screen.findAllByTestId('shopping-cart-product-name'))[0],
     ).toHaveTextContent(mockedQueryResult.results[0].title);
     expect(
-      (await screen.findAllByTestId('shopping-cart-product-name'))[1]
+      (await screen.findAllByTestId('shopping-cart-product-name'))[1],
     ).toHaveTextContent(mockedQueryResult.results[1].title);
 
     userEvent.click(await screen.findByTestId('checkout-products'));
     expect(screen.getByText(mockedQueryResult.results[0].title));
 
     expect(
-      screen.getByText(mockedQueryResult.results[0].title)
+      screen.getByText(mockedQueryResult.results[0].title),
     ).toHaveTextContent(mockedQueryResult.results[0].title);
     expect(
-      screen.getByText(mockedQueryResult.results[1].title)
+      screen.getByText(mockedQueryResult.results[1].title),
     ).toHaveTextContent(mockedQueryResult.results[1].title);
   });
 
@@ -64,22 +66,18 @@ describe(`12 - Finalize a compra vendo um resumo dela, preenchendo os seus dados
 
     userEvent.click(screen.getByTestId('checkout-btn'));
 
-    await waitFor(() =>
-      expect(screen.getByTestId('error-msg')).toBeInTheDocument()
-    );
+    await waitFor(() => expect(screen.getByTestId('error-msg')).toBeInTheDocument());
     expect(screen.getByTestId('error-msg')).toHaveTextContent(
-      'Campos inválidos'
+      'Campos inválidos',
     );
 
     userEvent.type(screen.getByTestId('checkout-address'), address);
     expect(screen.getByTestId('checkout-address')).toHaveValue(address);
 
     userEvent.click(screen.getByTestId('checkout-btn'));
-    await waitFor(() =>
-      expect(screen.getByTestId('error-msg')).toBeInTheDocument()
-    );
+    await waitFor(() => expect(screen.getByTestId('error-msg')).toBeInTheDocument());
     expect(screen.getByTestId('error-msg')).toHaveTextContent(
-      'Campos inválidos'
+      'Campos inválidos',
     );
 
     await act(async () => {
@@ -94,11 +92,9 @@ describe(`12 - Finalize a compra vendo um resumo dela, preenchendo os seus dados
     render(<App />);
 
     expect(global.fetch).toHaveBeenCalled();
-    await waitFor(() =>
-      expect(screen.getAllByTestId('category').length).toEqual(
-        mockedCategoriesResult.length
-      )
-    );
+    await waitFor(() => expect(screen.getAllByTestId('category').length).toEqual(
+      mockedCategoriesResult.length,
+    ));
   });
 
   it('Avalia se, ao entrar na página do carrinho, não há nenhum produto', async () => {
@@ -108,7 +104,7 @@ describe(`12 - Finalize a compra vendo um resumo dela, preenchendo os seus dados
     userEvent.click(screen.getByTestId('shopping-cart-button'));
     await waitFor(() => screen.getByTestId('shopping-cart-empty-message'));
     expect(screen.getByTestId('shopping-cart-empty-message')).toHaveTextContent(
-      'Seu carrinho está vazio'
+      'Seu carrinho está vazio',
     );
   });
 });

@@ -1,10 +1,10 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { Provider } from 'react-redux';
 import App from '../App';
 import mockedQueryResult from '../__mocks__/query';
 import mockFetch from '../__mocks__/mockFetch';
-import userEvent from '@testing-library/user-event';
-import { Provider } from 'react-redux';
 import store from '../redux/store';
 
 describe('8 - Adicione produtos a partir da tela de listagem de produtos', () => {
@@ -22,10 +22,10 @@ describe('8 - Adicione produtos a partir da tela de listagem de produtos', () =>
     expect(global.fetch).toHaveBeenCalledTimes(2);
     expect(screen.getAllByTestId('shopping-cart-product-name'));
     expect(screen.getByTestId('shopping-cart-product-name')).toHaveTextContent(
-      mockedQueryResult.results[0].title
+      mockedQueryResult.results[0].title,
     );
     expect(
-      screen.getByTestId('shopping-cart-product-quantity')
+      screen.getByTestId('shopping-cart-product-quantity'),
     ).toHaveTextContent('1');
   });
 });

@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaSearch } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { setProducts } from '../redux/features/products';
 import { getProductsFromCategoryAndQuery } from '../services/api';
+
+import Button from './Button';
+import ProductsCart from './ProductsCart';
+import ShopCartTotal from './ShopCartTotal';
 import CartButton from './CartButton';
 
 import Logo from '../assets/logo.svg';
-
 import '../styles/Header.css';
-import ProductsCart from './ProductsCart';
 
 function Header() {
   const [search, setSearch] = useState('');
@@ -17,6 +19,13 @@ function Header() {
 
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.cart);
+
+  const history = useHistory();
+
+  function redirect() {
+    setSlider(false);
+    history.push('/shopcart');
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -54,7 +63,19 @@ function Header() {
               <h1>Seu Carrinho Esta Vazio</h1>
             </div>
           ) : (
-            <ProductsCart />
+            <>
+              <ProductsCart />
+              <ShopCartTotal>
+                <Link to="/shopcart">
+                  <Button
+                    style={{ padding: '1rem 5rem', alignSelf: 'center' }}
+                    text="Finalizar Compra"
+                    type="button"
+                    onClick={() => redirect()}
+                  />
+                </Link>
+              </ShopCartTotal>
+            </>
           )}
         </div>
       )}

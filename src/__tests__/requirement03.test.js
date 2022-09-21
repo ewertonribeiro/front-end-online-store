@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import userEvent from '@testing-library/user-event';
-import store from '../redux/store'
+import store from '../redux/store';
 import App from '../App';
 
 describe('3 - Crie a página do carrinho de compras', () => {

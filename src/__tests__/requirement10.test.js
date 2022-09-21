@@ -1,12 +1,12 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import App from '../App';
 import * as api from '../services/api';
 import mockedQueryResult from '../__mocks__/query';
 import mockFetch from '../__mocks__/mockFetch';
-import userEvent from '@testing-library/user-event';
 
-describe(`10 - Visualize a lista de produtos adicionados ao carrinho em sua página e permita a manipulação da sua quantidade`, () => {
+describe('10 - Visualize a lista de produtos adicionados ao carrinho em sua página e permita a manipulação da sua quantidade', () => {
   afterEach(() => {
     global.fetch.mockClear();
   });
@@ -63,11 +63,9 @@ describe(`10 - Visualize a lista de produtos adicionados ao carrinho em sua pág
   it('É possível excluir um produto do carrinho', async () => {
     render(<App />);
 
-    await waitFor(() =>
-      expect(screen.getAllByTestId('shopping-cart-product-name')).toHaveLength(
-        2
-      )
-    );
+    await waitFor(() => expect(screen.getAllByTestId('shopping-cart-product-name')).toHaveLength(
+      2,
+    ));
 
     userEvent.click(screen.getAllByTestId('remove-product')[1]);
     expect(screen.getAllByTestId('shopping-cart-product-name')).toHaveLength(1);
