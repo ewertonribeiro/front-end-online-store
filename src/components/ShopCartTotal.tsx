@@ -1,16 +1,15 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 
 import formatPrice from '../utils/formatPrice';
 
-import type { RootState } from '../redux/store';
+import { useAppSelector } from '../redux/hooks/hooks';
 
 interface Props {
   children: React.ReactNode;
 }
 
 export default function ShopCartTotal({ children }: Props) {
-  const cart = useSelector((state: RootState) => state.cart.cart);
+  const cart = useAppSelector((state) => state.cart.cart);
 
   const totalPrice = cart.reduce(
     (acc, { quantity, price }) => (acc += quantity * price),

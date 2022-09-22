@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { UseAppDispatch, useAppSelector } from '../redux/hooks/hooks';
 
 import { getProductById } from '../services/api';
 import { add } from '../redux/features/cart';
@@ -12,8 +12,6 @@ import Quantity from '../components/Quantity';
 import formatPrice from '../utils/formatPrice';
 import { FiPackage } from 'react-icons/fi';
 
-import type { RootState } from '../redux/store';
-
 interface Param {
   id: string;
 }
@@ -22,9 +20,9 @@ function ProductDetails() {
   const { id }: Param = useParams();
 
   const [item, setItem] = useState<Item | undefined>();
-  const dispatch = useDispatch();
+  const dispatch = UseAppDispatch();
 
-  const cart = useSelector((state: RootState) => state.cart.cart);
+  const cart = useAppSelector((state) => state.cart.cart);
 
   useEffect(() => {
     const item = cart.find((item) => item.id == id);

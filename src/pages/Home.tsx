@@ -1,16 +1,14 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../redux/hooks/hooks';
 import Product from '../components/Product';
 import Aside from '../components/Aside';
-
-import type { RootState } from '../redux/store';
 
 import '../styles/Home.css';
 
 export default function Home() {
-  const lista = useSelector((state: RootState) => state.products.lista);
+  const lista = useAppSelector((state) => state.products.lista);
 
-  const cart = useSelector((state: RootState) => state.cart.cart);
+  const cart = useAppSelector((state) => state.cart.cart);
 
   return (
     <section className="home-page">

@@ -1,9 +1,10 @@
 import React, { FormEvent, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { FaSearch } from 'react-icons/fa';
 import { Link, useHistory } from 'react-router-dom';
 import { setProducts } from '../redux/features/products';
 import { getProductsFromCategoryAndQuery } from '../services/api';
+
+import { UseAppDispatch, useAppSelector } from '../redux/hooks/hooks';
 
 import Button from './Button';
 import ProductsCart from './ProductsCart';
@@ -12,17 +13,15 @@ import CartButton from './CartButton';
 
 import Logo from '../assets/logo.svg';
 
-import type { RootState } from '../redux/store';
-
 import '../styles/Header.css';
 
 function Header() {
   const [search, setSearch] = useState('');
   const [slider, setSlider] = useState(false);
 
-  const dispatch = useDispatch();
+  const dispatch = UseAppDispatch();
 
-  const cart = useSelector((state: RootState) => state.cart.cart);
+  const cart = useAppSelector((state) => state.cart.cart);
 
   const history = useHistory();
 

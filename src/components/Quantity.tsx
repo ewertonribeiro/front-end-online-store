@@ -1,15 +1,14 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { HiPlus, HiMinus } from 'react-icons/hi';
 import { add, sub } from '../redux/features/cart';
 
 import '../styles/Quantity.css';
 
-import type { RootState } from '../redux/store';
+import { UseAppDispatch, useAppSelector } from '../redux/hooks/hooks';
 
 function Quantity(item: Item) {
-  const dispatch = useDispatch();
-  const cart = useSelector((state: RootState) => state.cart.cart);
+  const dispatch = UseAppDispatch();
+  const cart = useAppSelector((state) => state.cart.cart);
 
   const [inCart, setInCart] = useState(false);
 

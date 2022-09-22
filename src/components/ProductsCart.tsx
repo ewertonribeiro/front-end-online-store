@@ -1,16 +1,15 @@
 import React from 'react';
 import { FaTrash } from 'react-icons/fa';
-import { useDispatch, useSelector } from 'react-redux';
 import { remove } from '../redux/features/cart';
 
 import Quantity from './Quantity';
 import formatPrice from '../utils/formatPrice';
 
-import type { RootState } from '../redux/store';
+import { UseAppDispatch, useAppSelector } from '../redux/hooks/hooks';
 
 export default function ProductsCart() {
-  const cart = useSelector((state: RootState) => state.cart.cart);
-  const dispatch = useDispatch();
+  const cart = useAppSelector((state) => state.cart.cart);
+  const dispatch = UseAppDispatch();
 
   const reversedCart = cart.slice(0).reverse();
 
