@@ -3,7 +3,7 @@
   width: 95%;
   height: 100%;
   display: grid;
-  grid-template-columns: 15% 80%;
+  grid-template-columns: 20% 75%;
   grid-gap: 2rem;
   margin: calc(var(--header-height) + 2rem) auto 0;
 }
@@ -14,4 +14,3 @@
   display: flex;
   flex-wrap: wrap;
 }
-

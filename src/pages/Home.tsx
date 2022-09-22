@@ -4,6 +4,7 @@ import Product from '../components/Product';
 import Aside from '../components/Aside';
 
 import '../styles/Home.css';
+import '../styles/query/home-page-mediaquery.css';
 
 export default function Home() {
   const lista = useAppSelector((state) => state.products.lista);

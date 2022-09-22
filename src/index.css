@@ -1,7 +1,7 @@
 :root {
-  --color-blue: #003BE5;
-  --color-green: #31C28D;
-  --color-grey: #94979D;
+  --color-blue: #003be5;
+  --color-green: #31c28d;
+  --color-grey: #94979d;
 
   --header-height: 8rem;
 }
@@ -66,6 +66,7 @@ code {
   height: 30rem;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 .message-container h1 {
