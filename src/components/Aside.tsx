@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import {
   getCategories,
@@ -10,7 +10,7 @@ import '../styles/Aside.css';
 
 export default function Aside() {
   const dispatch = useDispatch();
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState<Categorie[]>([]);
 
   useEffect(() => {
     getCategories().then((categorie) => {
@@ -18,7 +18,7 @@ export default function Aside() {
     });
   }, []);
 
-  async function handleCategoryClick(id) {
+  async function handleCategoryClick(id: string) {
     const { results } = await getProductsFromCategoryAndQuery(id);
     dispatch(setProducts({ lista: results }));
   }

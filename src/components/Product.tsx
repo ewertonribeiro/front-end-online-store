@@ -6,45 +6,54 @@ import { add } from '../redux/features/cart';
 import '../styles/Product.css';
 import Button from './Button';
 
-export default function Product({
-  title, price, thumbnail, id, cart, ...rest
-}) {
-  const dispatch = useDispatch();
-  const { shipping: { free_shipping } } = rest;
+import formatPrice from '../utils/formatPrice';
 
-  const formatNumber = (price) => Number(price)
-    .toLocaleString('pt-br', {
-      style: 'currency',
-      currency: 'BRL',
-    });
+export default function Product({
+  title,
+  price,
+  thumbnail,
+  id,
+  cart,
+  shipping,
+  ...rest
+}: Item) {
+  const dispatch = useDispatch();
+
   return (
     <div className={`product ${cart && 'product-in-cart'}`}>
-      {free_shipping && (
-      <div className="frete">
-        Frete Grátis
-        <FiPackage />
-      </div>
+      {shipping.free_shipping && (
+        <div className="frete">
+          Frete Grátis
+          <FiPackage />
+        </div>
       )}
       <div>
         <img src={thumbnail} alt={title} />
         <h2 className="product-title">{title}</h2>
         <p className="product-price">
-          <strong>{formatNumber(price)}</strong>
+          <strong>{formatPrice(price)}</strong>
         </p>
       </div>
       <div className="div-button">
-        <Link className="saiba-mais" to={`/product/${id}`}>Saiba Mais</Link>
+        <Link className="saiba-mais" to={`/product/${id}`}>
+          Saiba Mais
+        </Link>
         <Button
           text="Adicionar ao Carrinho"
-          onClick={() => dispatch(add({
-            item: {
-              title,
-              price,
-              thumbnail,
-              id,
-              ...rest,
-            },
-          }))}
+          onClick={() =>
+            dispatch(
+              add({
+                item: {
+                  title,
+                  price,
+                  thumbnail,
+                  id,
+                  shipping,
+                  ...rest,
+                },
+              }),
+            )
+          }
         />
       </div>
     </div>
