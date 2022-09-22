@@ -10,9 +10,7 @@
   }
 
   aside {
-    /* position: fixed;
-    top: var(--header-height); */
-    z-index: 100;
+    /* z-index: 100; */
     background-color: white;
 
     display: flex;
@@ -24,6 +22,10 @@
     width: 90%;
     overflow: hidden;
     padding: 0 1.4rem 1.4rem;
+  }
+
+  .button-categorie {
+    display: block;
   }
 
   aside .labels-wrapper {
@@ -38,12 +40,4 @@
     flex-direction: column;
     padding-right: 20px;
   }
-
-  /* aside label {
-    color: #444955;
-    font-weight: 500;
-    display: flex;
-    gap: 10px;
-    cursor: pointer;
-  } */
 }

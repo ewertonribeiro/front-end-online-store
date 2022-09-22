@@ -13,12 +13,26 @@ export default function Aside() {
   const dispatch = useDispatch();
   const [categories, setCategories] = useState<Categorie[]>([]);
 
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
 
   useEffect(() => {
     getCategories().then((categorie) => {
       setCategories(categorie);
     });
+
+    const listener = (e: UIEvent) => {
+      if (window.innerWidth >= 1144) {
+        setShow(true);
+      } else {
+        setShow(false);
+      }
+    };
+
+    window.addEventListener('resize', listener);
+
+    return () => {
+      window.removeEventListener('resize', listener, false);
+    };
   }, []);
 
   async function handleCategoryClick(id: string) {
@@ -28,6 +42,7 @@ export default function Aside() {
   return (
     <>
       <Button
+        categorie
         text="Categorias"
         style={{ width: '80%' }}
         onClick={() => setShow(!show)}

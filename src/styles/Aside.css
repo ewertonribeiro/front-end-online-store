@@ -6,6 +6,7 @@ aside {
   height: 80vh;
   overflow-y: scroll;
   padding: 0 1.4rem 1.4rem;
+  z-index: 1;
 }
 .labels-wrapper {
   display: flex;
@@ -28,6 +29,10 @@ aside label {
   display: flex;
   gap: 10px;
   cursor: pointer;
+}
+
+.button-categorie {
+  display: none;
 }
 
 aside::-webkit-scrollbar {
