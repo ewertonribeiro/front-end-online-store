@@ -11,13 +11,16 @@
 .shopcart-total {
   display: flex;
   flex-direction: column;
-
 }
 
 .shopcart-total h3 {
   font-size: 2rem;
 }
 
+.products-cart-container {
+  max-height: 25rem;
+  overflow-y: scroll;
+}
 
 .product-cart {
   display: flex;
@@ -27,7 +30,7 @@
 }
 
 .product-name {
-  font-size: .9rem; 
+  font-size: 0.9rem;
   color: #444955;
   font-weight: 600;
 }
@@ -36,7 +39,7 @@
   font-size: 1.2rem;
 }
 .product-cart button {
-  border:none; 
+  border: none;
   background-color: transparent;
   font-size: 2rem;
   cursor: pointer;
@@ -70,17 +73,17 @@ form .form-inputs {
 }
 
 .form-inputs input {
-  border: 1px solid #94979D;
+  border: 1px solid #94979d;
   color: var(--color-grey);
   font-weight: 400;
   font-size: 1.2rem;
-  padding: .3rem;
+  padding: 0.3rem;
   /* width: 350px; */
 }
 
 .form-inputs select {
   background-color: transparent;
-  border: 1px solid #94979D;
+  border: 1px solid #94979d;
   color: var(--color-grey);
   font-weight: 300;
   font-size: 1.2rem;
@@ -140,7 +143,7 @@ form .form-inputs {
   align-items: center;
 }
 
-.payment-methods-method  label{
+.payment-methods-method label {
   display: flex;
   gap: 1rem;
   font-size: 2.8rem;
@@ -151,6 +154,6 @@ form button {
   align-self: center;
 }
 
-.payment-methods-method input[type=radio]:checked {
+.payment-methods-method input[type='radio']:checked {
   color: var(--color-green);
 }

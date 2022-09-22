@@ -60,7 +60,7 @@ header .header-container {
 }
 
 .slider {
-  position: absolute;
+  position: fixed;
   background-color: white;
   right: 0;
   top: var(--header-height);

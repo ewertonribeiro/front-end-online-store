@@ -3,12 +3,12 @@ import { useSelector } from 'react-redux';
 
 import Button from '../components/Button';
 import Form from '../components/Form';
-
-import '../styles/ShopCart.css';
 import ProductsCart from '../components/ProductsCart';
 import ShopCartTotal from '../components/ShopCartTotal';
 
 import type { RootState } from '../redux/store';
+
+import '../styles/ShopCart.css';
 
 export default function ShopCart() {
   const cart = useSelector((state: RootState) => state.cart.cart);
