@@ -10,9 +10,11 @@ import formatPrice from '../utils/formatPrice';
 export default function ProductsCart() {
   const cart = useSelector((state) => state.cart.cart);
   const dispatch = useDispatch();
+  const reversedCart = cart.slice(0).reverse();
+
   return (
-    <>
-      {cart.map((item) => (
+    <div className="products-cart-container">
+      {reversedCart.map((item) => (
         <div key={item.id} className="product-cart">
           <button type="button" onClick={() => dispatch(remove({ item }))}>
             <FaTrash />
@@ -23,6 +25,6 @@ export default function ProductsCart() {
           <p className="product-price">{formatPrice(item.price)}</p>
         </div>
       ))}
-    </>
+    </div>
   );
 }

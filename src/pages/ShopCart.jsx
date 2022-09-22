@@ -3,10 +3,10 @@ import { useSelector } from 'react-redux';
 
 import Button from '../components/Button';
 import Form from '../components/Form';
-
-import '../styles/ShopCart.css';
 import ProductsCart from '../components/ProductsCart';
 import ShopCartTotal from '../components/ShopCartTotal';
+
+import '../styles/ShopCart.css';
 
 export default function ShopCart() {
   const cart = useSelector((state) => state.cart.cart);
