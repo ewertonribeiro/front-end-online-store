@@ -1,9 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
+
 import {
-  getAllFromCart, subToCart, addToCart, removeToCart,
+  getAllFromCart,
+  subToCart,
+  addToCart,
+  removeToCart,
 } from '../../services/localStorage';
 
-const initialState = {
+interface Cart {
+  cart: Item[];
+}
+
+interface PayloadItem {
+  item: Item;
+}
+
+const initialState: Cart = {
   cart: getAllFromCart(),
 };
 
@@ -14,23 +27,21 @@ export const cartSlice = createSlice({
     setCart: (state) => {
       state.cart = getAllFromCart();
     },
-    add: (state, { payload: { item } }) => {
+    add: (state, { payload: { item } }: PayloadAction<PayloadItem>) => {
       addToCart(item);
       state.cart = getAllFromCart();
     },
-    sub: (state, { payload: { item } }) => {
+    sub: (state, { payload: { item } }: PayloadAction<PayloadItem>) => {
       subToCart(item);
       state.cart = getAllFromCart();
     },
-    remove: (state, { payload: { item } }) => {
+    remove: (state, { payload: { item } }: PayloadAction<PayloadItem>) => {
       removeToCart(item);
       state.cart = getAllFromCart();
     },
   },
 });
 
-export const {
-  setCart, add, remove, sub,
-} = cartSlice.actions;
+export const { setCart, add, remove, sub } = cartSlice.actions;
 
 export default cartSlice.reducer;

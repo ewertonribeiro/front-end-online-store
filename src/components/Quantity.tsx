@@ -1,13 +1,16 @@
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { HiPlus, HiMinus } from 'react-icons/hi';
 import { add, sub } from '../redux/features/cart';
 
 import '../styles/Quantity.css';
-import { useEffect, useState } from 'react';
+
+import type { RootState } from '../redux/store';
 
 function Quantity(item: Item) {
   const dispatch = useDispatch();
-  const cart: Item[] = useSelector((state: any) => state.cart.cart);
+  const cart = useSelector((state: RootState) => state.cart.cart);
+
   const [inCart, setInCart] = useState(false);
 
   useEffect(() => {

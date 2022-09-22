@@ -11,6 +11,9 @@ import ShopCartTotal from './ShopCartTotal';
 import CartButton from './CartButton';
 
 import Logo from '../assets/logo.svg';
+
+import type { RootState } from '../redux/store';
+
 import '../styles/Header.css';
 
 function Header() {
@@ -18,7 +21,8 @@ function Header() {
   const [slider, setSlider] = useState(false);
 
   const dispatch = useDispatch();
-  const cart: Item[] = useSelector((state: any) => state.cart.cart);
+
+  const cart = useSelector((state: RootState) => state.cart.cart);
 
   const history = useHistory();
 

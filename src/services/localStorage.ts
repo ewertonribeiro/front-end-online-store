@@ -1,14 +1,14 @@
 const l = localStorage;
 
-function getAllFromCart() {
+function getAllFromCart(): Item[] {
   const itens = l.getItem('cart');
 
-  const cart = typeof itens === 'string' ? JSON.parse(itens) : [];
+  const cart: Item[] = typeof itens === 'string' ? JSON.parse(itens) : [];
 
   return cart;
 }
 
-function addToCart(item: Item) {
+function addToCart(item: Item): void {
   const itens: Item[] = getAllFromCart();
 
   const itemAlreadInCart = itens.some(({ id }) => id === item.id);
@@ -29,7 +29,7 @@ function addToCart(item: Item) {
   }
 }
 
-function subToCart(item: Item) {
+function subToCart(item: Item): void {
   const itens: Item[] = getAllFromCart();
 
   const newCart = itens.filter((e) => {
@@ -46,7 +46,7 @@ function subToCart(item: Item) {
   l.setItem('cart', JSON.stringify(newCart));
 }
 
-function removeToCart(item: Item) {
+function removeToCart(item: Item): void {
   const itens: Item[] = getAllFromCart();
 
   const newCart = itens.filter((e) => e.id !== item.id);
@@ -54,7 +54,7 @@ function removeToCart(item: Item) {
   l.setItem('cart', JSON.stringify(newCart));
 }
 
-function getItemFromCart(id: string) {
+function getItemFromCart(id: string): Item | undefined {
   const itens: Item[] = getAllFromCart();
   return itens.find((item) => item.id === id);
 }

@@ -4,12 +4,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { remove } from '../redux/features/cart';
 
 import Quantity from './Quantity';
-
 import formatPrice from '../utils/formatPrice';
 
+import type { RootState } from '../redux/store';
+
 export default function ProductsCart() {
-  const cart: Item[] = useSelector((state: any) => state.cart.cart);
+  const cart = useSelector((state: RootState) => state.cart.cart);
   const dispatch = useDispatch();
+
   return (
     <>
       {cart.map((item) => (

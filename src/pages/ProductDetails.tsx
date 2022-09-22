@@ -12,6 +12,8 @@ import Quantity from '../components/Quantity';
 import formatPrice from '../utils/formatPrice';
 import { FiPackage } from 'react-icons/fi';
 
+import type { RootState } from '../redux/store';
+
 interface Param {
   id: string;
 }
@@ -22,7 +24,7 @@ function ProductDetails() {
   const [item, setItem] = useState<Item | undefined>();
   const dispatch = useDispatch();
 
-  const cart: Item[] = useSelector(({ cart }: any) => cart.cart);
+  const cart = useSelector((state: RootState) => state.cart.cart);
 
   useEffect(() => {
     const item = cart.find((item) => item.id == id);
@@ -77,7 +79,7 @@ function ProductDetails() {
               <Quantity {...item} />
               <Button
                 text="Adicionar ao Carrinho"
-                onClick={() => dispatch(add({ item: item }))}
+                onClick={() => dispatch(add({ item }))}
                 type="button"
               />
             </div>

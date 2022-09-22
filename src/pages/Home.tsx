@@ -3,12 +3,14 @@ import { useSelector } from 'react-redux';
 import Product from '../components/Product';
 import Aside from '../components/Aside';
 
+import type { RootState } from '../redux/store';
+
 import '../styles/Home.css';
 
 export default function Home() {
-  const lista: Item[] = useSelector((state: any) => state.products.lista);
+  const lista = useSelector((state: RootState) => state.products.lista);
 
-  const cart: Item[] = useSelector(({ cart }: any) => cart.cart);
+  const cart = useSelector((state: RootState) => state.cart.cart);
 
   return (
     <section className="home-page">

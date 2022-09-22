@@ -8,8 +8,10 @@ import '../styles/ShopCart.css';
 import ProductsCart from '../components/ProductsCart';
 import ShopCartTotal from '../components/ShopCartTotal';
 
+import type { RootState } from '../redux/store';
+
 export default function ShopCart() {
-  const cart: Item[] = useSelector((state: any) => state.cart.cart);
+  const cart = useSelector((state: RootState) => state.cart.cart);
 
   const [buy, setBuy] = useState(false);
 
