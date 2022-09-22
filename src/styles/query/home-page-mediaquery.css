@@ -6,7 +6,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: calc(var(--header-height) + 2rem) auto 0;
+    margin: calc(var(--header-height) + 6rem) auto 0;
   }
 
   aside {

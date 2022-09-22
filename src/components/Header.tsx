@@ -14,6 +14,7 @@ import CartButton from './CartButton';
 import Logo from '../assets/logo.svg';
 
 import '../styles/Header.css';
+import '../styles/query/header-component-mediaquery.css';
 
 function Header() {
   const [search, setSearch] = useState('');
