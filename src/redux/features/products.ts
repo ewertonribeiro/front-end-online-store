@@ -1,31 +1,30 @@
 import { createSlice } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
+import { fetchItemByQuery } from '../thunks/fetchItemByQuery';
+import { fetchItemBySearch } from '../thunks/fetchItemBySearch';
 
 interface List {
-  lista: Item[] | [];
+    lista: Item[];
 }
 
-interface PayloadList {
-  lista: Item[];
-}
 
 const initialState: List = {
-  lista: [],
+    lista: [],
 };
 
+
 export const productSlice = createSlice({
-  name: 'products',
-  initialState,
-  reducers: {
-    setProducts: (
-      state,
-      { payload: { lista } }: PayloadAction<PayloadList>,
-    ) => {
-      state.lista = lista;
+    name: 'products',
+    initialState,
+    reducers: {},
+    extraReducers: (builder) => {
+        builder.addCase(fetchItemBySearch.fulfilled, (state, {payload}) => {
+            state.lista = payload;
+        });
+        builder.addCase(fetchItemByQuery.fulfilled , (state,{payload})=>{
+            state.lista = payload
+        })
     },
-  },
 });
 
-export const { setProducts } = productSlice.actions;
 
 export default productSlice.reducer;

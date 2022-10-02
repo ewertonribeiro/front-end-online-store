@@ -8,10 +8,15 @@ export async function getCategories() {
   return data;
 }
 
+
+interface APIRETURN {
+    results:Item[]
+}
+
 export async function getProductsFromCategoryAndQuery(
   categoryId?: string,
   query?: string,
-) {
+):Promise<APIRETURN> {
   if (categoryId) {
     const response = await fetch(`${URL}/search?category=${categoryId}`);
 
